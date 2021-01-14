@@ -152,9 +152,9 @@ def startprint():
                                      
                                      
 
-                            {Fore.ORANGE}Choppa Selfbot v{SELFBOT.__version__} | {Fore.ORANGE}Client Username:{choppa.user.name}#{choppa.user.discriminator}
-                            {Fore.ORANGE}Client ID:{choppa.user.id} | {Fore.ORANGE}Slotbot Sniper:{slotbot_sniper}
-                            {Fore.ORANGE}Nitro Sniper:{nitro_sniper} | {Fore.ORANGE}Client Prefix:{choppa.command_prefix}
+                            {Fore.ORANGE}VloneX Exclusive Selfbot v{SELFBOT.__version__} | {Fore.ORANGE}Client Username:{vlonex.user.name}#{vlonex.user.discriminator}
+                            {Fore.ORANGE}Client ID:{vlonex.user.id} | {Fore.ORANGE}Slotbot Sniper:{slotbot_sniper}
+                            {Fore.ORANGE}Nitro Sniper:{nitro_sniper} | {Fore.ORANGE}Client Prefix:{vlonex.command_prefix}
                             {Fore.ORANGE}Giveaway Sniper:{giveaway_sniper}
                             {Fore.ORANGE}ezo made this aka VLONE but give vlone creds ezo#2021 <3
 
@@ -171,7 +171,7 @@ Clear()
 def Init():
     token = config.get('token')
     try:
-        choppa.run(token, bot=False, reconnect=True)
+        vlonex.run(token, bot=False, reconnect=True)
     except discord.errors.LoginFailure:
         print(f"{Fore.RED}[ERROR] {Fore.ORANGE}Improper token has been passed" + Fore.RESET)
         os.system('pause >NUL')
@@ -252,11 +252,11 @@ async def on_connect():
   
     
     startprint()
-    ctypes.windll.kernel32.SetConsoleTitleW(f'[Choppa Selfbot v{SELFBOT.__version__}] | Client User:{vlonex.user.name}#{vlonex.user.discriminator}')
+    ctypes.windll.kernel32.SetConsoleTitleW(f'[VloneX Selfbot v{SELFBOT.__version__}] | Client User:{vlonex.user.name}#{vlonex.user.discriminator}')
 
 @vlonex.event
 async def on_message_edit(before, after):
-    await choppa.process_commands(after)
+    await vlonex.process_commands(after)
 
 @vlonex.event
 async def on_message(message):
@@ -319,7 +319,7 @@ async def on_message(message):
             return
 
     if 'Someone just dropped' in message.content:
-        if choppa.slotbot_sniper:
+        if vlonex.slotbot_sniper:
             if message.author.id == 346353957029019648:
                 try:
                     await message.channel.send('~grab')
@@ -334,7 +334,7 @@ async def on_message(message):
             return
 
     if 'GIVEAWAY' in message.content:
-        if choppa.giveaway_sniper:
+        if vlonex.giveaway_sniper:
             if message.author.id == 294882584201003009:
                 try:
                     await message.add_reaction("🎉")
@@ -462,7 +462,7 @@ async def whois(ctx, *, user: discord.Member = None):
     perm_string = ', '.join([str(p[0]).replace("_", " ").title() for p in user.guild_permissions if p[1]])
     em.add_field(name="Guild permissions", value=perm_string, inline=False)
     em.set_footer(text='ID: ' + str(user.id))
-    em.add_field(name="`choppa <3`", value="We See You Using this sb cuh (;", inline=True)
+    em.add_field(name="`VloneX <3`", value="We See You Using this sb cuh (;", inline=True)
     return await ctx.send(embed=em)
 
 @vlonex.command(aliases=['pfpget', 'stealpfp'])
@@ -481,7 +481,7 @@ async def stealav(ctx, user: discord.Member):
         try:
             Image.open('Images/Avatars/Stolen/Stolen.png').convert('RGB')
             with open('Images/Avatars/Stolen/Stolen.png', 'rb') as f:
-              await choppa.user.edit(password=password, avatar=f.read())
+              await vlonex.user.edit(password=password, avatar=f.read())
         except discord.HTTPException as e:
             print(f"{Fore.RED}[ERROR]: {Fore.RED}{e}"+Fore.RESET)
 
@@ -501,7 +501,7 @@ async def _set_pfp(ctx, *, url):
     try:
         Image.open('Images/Avatars/PFP-1.png'   ).convert('RGB')
         with open('Images/Avatars/PFP-1.png', 'rb') as f:
-            await choppa.user.edit(password=password, avatar=f.read())
+            await vlonex.user.edit(password=password, avatar=f.read())
     except discord.HTTPException as e:
             print(f"{Fore.RED}[ERROR]: {Fore.RED}{e}"+Fore.RESET)
 
@@ -515,7 +515,7 @@ async def dick(ctx, *, user: discord.Member = None):
     for _i in range(0, size):
         dong += "="
     em = discord.Embed(title=f"{user}'s Penis Size", description=f"8{dong}D", colour=0x0000)
-    em.add_field(name="`choppa <3`", value="i see u using this sb cuh (;", inline=True)
+    em.add_field(name="`VloneX <3`", value="i see u using this sb cuh (;", inline=True)
     await ctx.send(embed=em)
 
 @vlonex.command()
@@ -769,7 +769,7 @@ async def uptime(ctx):
 @vlonex.command()
 async def purge(ctx, amount: int):
     await ctx.message.delete()
-    async for message in ctx.message.channel.history(limit=amount).filter(lambda m: m.author == choppa.user).map(lambda m: m):
+    async for message in ctx.message.channel.history(limit=amount).filter(lambda m: m.author == vlonex.user).map(lambda m: m):
         try:
            await message.delete()
         except:
@@ -823,7 +823,7 @@ async def renameg(ctx, *, name):
 @vlonex.command()
 async def prefix(ctx, prefix):
     await ctx.message.delete()
-    choppa.command_prefix = str(prefix)
+    vlonex.command_prefix = str(prefix)
 
 @vlonex.command()
 async def setgpfp(ctx, url: str):
