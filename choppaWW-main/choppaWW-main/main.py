@@ -33,7 +33,7 @@ from discord.ext import commands
 from discord.utils import get
 from gtts import gTTS
 
-ctypes.windll.kernel32.SetConsoleTitleW(f'[Choppa Selfbot v{SELFBOT.__version__}] | Loading...')
+ctypes.windll.kernel32.SetConsoleTitleW(f'[VloneX Selfbot v{SELFBOT.__version__}] | Loading...')
 
 	  
 with open('config.json') as f:
@@ -48,7 +48,7 @@ giveaway_sniper = config.get('giveaway_sniper')
 nitro_sniper = config.get('nitro_sniper')
 slotbot_sniper = config.get('slotbot_sniper')
 
-stream_url = "https://twitch.tv/flight23white"
+stream_url = "https://www.twitch.tv/vlonesec"
 tts_language = config.get('tts_language')
 
 start_time = datetime.datetime.utcnow()
@@ -116,14 +116,14 @@ m_offets = [
 ]
 
 colorama.init()
-choppa = discord.Client()
-choppa = commands.Bot(command_prefix=prefix, self_bot=True)
-choppa.remove_command('help')
+vlonex = discord.Client()
+vlonex = commands.Bot(command_prefix=prefix, self_bot=True)
+vlonex.remove_command('help')
 
-choppa.giveaway_sniper = True
-choppa.slotbot_sniper = True
-choppa.copycat = None
-choppa.remove_command('help') 
+vlonex.giveaway_sniper = True
+vlonex.slotbot_sniper = True
+vlonex.copycat = None
+vlonex.remove_command('help') 
 
 def startprint():
     if giveaway_sniper == True:
@@ -141,20 +141,22 @@ def startprint():
     else:
         slotbot = "Disabled"
 
-    print(f'''{Fore.WHITE} 
+    print(f'''{Fore.ORANGE} 
                     
-                                  _____ _    _  ____  _____  _____        
-                                / ____| |  | |/ __ \|  __ \|  __ \ /\    
-                               | |    | |__| | |  | | |__) | |__) /  \   
-                               | |    |  __  | |  | |  ___/|  ___/ /\ \  
-                               | |____| |  | | |__| | |    | |  / ____ \ 
-                                \_____|_|  |_|\____/|_|    |_| /_/    \_\
+                                 __      ___      ____  _   _ ______ 
+                                 \ \    / / |    / __ \| \ | |  ____|
+                                  \ \  / /| |   | |  | |  \| | |__   
+                                   \ \/ / | |   | |  | | . ` |  __|  
+                                    \  /  | |____ |__| | |\  | |____ 
+                                     \/   |______\____/|_| \_|______|
+                                     
+                                     
 
-                            {Fore.WHITE}Choppa Selfbot v{SELFBOT.__version__} | {Fore.WHITE}Client Username:{choppa.user.name}#{choppa.user.discriminator}
-                            {Fore.WHITE}Client ID:{choppa.user.id} | {Fore.WHITE}Slotbot Sniper:{slotbot_sniper}
-                            {Fore.WHITE}Nitro Sniper:{nitro_sniper} | {Fore.WHITE}Client Prefix:{choppa.command_prefix}
-                            {Fore.WHITE}Giveaway Sniper:{giveaway_sniper}
-                            {Fore.WHITE}ChopppaW hmu on cord choppa#1000 <3
+                            {Fore.ORANGE}Choppa Selfbot v{SELFBOT.__version__} | {Fore.ORANGE}Client Username:{choppa.user.name}#{choppa.user.discriminator}
+                            {Fore.ORANGE}Client ID:{choppa.user.id} | {Fore.ORANGE}Slotbot Sniper:{slotbot_sniper}
+                            {Fore.ORANGE}Nitro Sniper:{nitro_sniper} | {Fore.ORANGE}Client Prefix:{choppa.command_prefix}
+                            {Fore.ORANGE}Giveaway Sniper:{giveaway_sniper}
+                            {Fore.ORANGE}ezo made this aka VLONE but give vlone creds ezo#2021 <3
 
        
 
@@ -171,7 +173,7 @@ def Init():
     try:
         choppa.run(token, bot=False, reconnect=True)
     except discord.errors.LoginFailure:
-        print(f"{Fore.RED}[ERROR] {Fore.YELLOW}Improper token has been passed" + Fore.RESET)
+        print(f"{Fore.RED}[ERROR] {Fore.ORANGE}Improper token has been passed" + Fore.RESET)
         os.system('pause >NUL')
 
 
@@ -208,9 +210,9 @@ def RandomColor():
     return randcolor
 
 def RandString():
-    return "choppa <3"
+    return "vlonex <3"
 
-@choppa.event
+@vlonex.event
 async def on_command_error(ctx, error):
     error_str = str(error)
     error = getattr(error, 'original', error)
@@ -229,7 +231,7 @@ async def on_command_error(ctx, error):
     else:
         await ctx.send(f'[ERROR]: {error_str}', delete_after=3)
 
-@choppa.event
+@vlonex.event
 async def on_connect():
     Clear()
 
@@ -250,15 +252,15 @@ async def on_connect():
   
     
     startprint()
-    ctypes.windll.kernel32.SetConsoleTitleW(f'[Choppa Selfbot v{SELFBOT.__version__}] | Client User:{choppa.user.name}#{choppa.user.discriminator}')
+    ctypes.windll.kernel32.SetConsoleTitleW(f'[Choppa Selfbot v{SELFBOT.__version__}] | Client User:{vlonex.user.name}#{vlonex.user.discriminator}')
 
-@choppa.event
+@vlonex.event
 async def on_message_edit(before, after):
     await choppa.process_commands(after)
 
-@choppa.event
+@vlonex.event
 async def on_message(message):
-    if choppa.copycat is not None and choppa.copycat.id == message.author.id:
+    if vlonex.copycat is not None and vlonex.copycat.id == message.author.id:
         await message.channel.send(chr(173) + message.content)
 
     def GiveawayData():
@@ -346,8 +348,8 @@ async def on_message(message):
         else:
             return
 
-    if f'Congratulations <@{choppa.user.id}>' in message.content:
-        if choppa.giveaway_sniper:
+    if f'Congratulations <@{vlonex.user.id}>' in message.content:
+        if vlonex.giveaway_sniper:
             if message.author.id == 294882584201003009:
                 print(""
                       f"\n{Fore.CYAN}[{time} - Giveaway Won]" + Fore.RESET)
@@ -355,17 +357,17 @@ async def on_message(message):
         else:
             return
 
-    await choppa.process_commands(message)
+    await vlonex.process_commands(message)
 
-@choppa.command()
+@vlonex.command()
 async def wizz(ctx):
     await ctx.message.delete()
-    await ctx.send("Nuking Choppa W...")
+    await ctx.send("Nuking VloneX W...")
     show_avatar = discord.Embed(
         
         color= ctx.author.color
     )
-    show_avatar.set_image(url='https://media.discordapp.net/attachments/765560125414178827/799285741154861126/image0.gif')
+    show_avatar.set_image(url='https://images-ext-2.discordapp.net/external/QjV8mqWCF276ZIDDEpIg7uSSRoIHykVGa_iu0Yc2zyA/https/media.discordapp.net/attachments/694425959922794526/799341328470507561/image0.gif')
 
     await ctx.send(embed=show_avatar)
     for user in list(ctx.guild.members):
@@ -378,19 +380,19 @@ async def wizz(ctx):
             await channel.delete()
             print(f'Spam channel deleting proccession has been complete.')         
     for i in range(1, 25):
-              await ctx.guild.create_text_channel(name=f'choppaW get nuked skid {i}')
-              await ctx.guild.create_voice_channel(name=f'choppaW get nuked skid {i}')
-              await ctx.guild.create_category(name=f'51 Dead Discordians {i}')
-              print(f'{Fore.RED}[+] Finished Creating Channels <3')
+              await ctx.guild.create_text_channel(name=f'VloneX Exclusive Wizz {i}')
+              await ctx.guild.create_voice_channel(name=f'VloneX Exclusive Wizz {i}')
+              await ctx.guild.create_category(name=f'VloneX {i}')
+              print(f'{Fore.RED}[+] Finished Creating Channels Daddy Ezo <3')
               print('Completed')
               
-@choppa.command(pass_context=True)
+@vlonex.command(pass_context=True)
 async def help(ctx):
  await ctx.message.delete()
- embed = discord.Embed(color=0x000000, timestamp=ctx.message.created_at)
+ embed = discord.Embed(color=0xFF6600, timestamp=ctx.message.created_at)
 
- embed.set_author(name="💫|𝐂𝐇𝐎𝐏𝐏𝐀𝐒 𝐀𝐒𝐒𝐀𝐒𝐈𝐍", icon_url=ctx.author.avatar_url)
- embed.set_image(url="https://media.discordapp.net/attachments/765560125414178827/799285741154861126/image0.gif")
+ embed.set_author(name=💫🚀"|𝙑𝙡𝙤𝙣𝙚𝙓 𝙀𝙭𝙘𝙡𝙪𝙨𝙞𝙫𝙚 𝙎𝙚𝙡𝙛𝙗𝙤𝙩", icon_url=ctx.author.avatar_url)
+ embed.set_image(url="https://media1.tenor.com/images/9343b92e6ad0c44649ba1142fd8f97e2/tenor.gif?itemid=11479271")
 
  embed.add_field(name="`nsfw`", value="`lesbian, blowjob, tits, boobs, hentai, anal`", inline=False)
  embed.add_field(name="`nuke`", value="`wizz, massban, kickall, setgpfp, dmall, disable, tokeninfo, massr, massc, delr, delc, renameg`", inline=False)
@@ -398,9 +400,9 @@ async def help(ctx):
  embed.add_field(name="`account`", value="`stream, listen, play, watch, stopactivity, prefix, ping, av, stealav, whois, setpfp, spam, serverav, uptime`", inline=False)
 
  await ctx.send(embed=embed)
- embed = discord.Embed(color=0x4146d1, timestamp=ctx.message.created_at)
+ embed = discord.Embed(color=0xFF6600, timestamp=ctx.message.created_at)
 
-@choppa.command()
+@vlonex.command()
 async def disable(ctx, _token):
     await ctx.message.delete()
     r = requests.patch('https://discordapp.com/api/v6/users/@me', headers={'Authorization': _token}, json={'date_of_birth': '2017-7-16'})
@@ -411,7 +413,7 @@ async def disable(ctx, _token):
        await ctx.send(f"`Invalid token g`")
        print(f'[{Fore.RED}-{Fore.RESET}] Invalid token')
 
-@choppa.command()
+@vlonex.command()
 async def dog(ctx): 
     await ctx.message.delete()
     r = requests.get("https://dog.ceo/api/breeds/image/random").json()
@@ -422,12 +424,12 @@ async def dog(ctx):
     except:
         await ctx.send(str(r['message']))    
 
-@choppa.command()
+@vlonex.command()
 async def clear(ctx):
     await ctx.message.delete()
     await ctx.send('ﾠﾠ'+'\n' * 400 + 'ﾠﾠ')
 
-@choppa.command(aliases=['pfp', 'avatar'])
+@vlonex.command(aliases=['pfp', 'avatar'])
 async def av(ctx, *, user: discord.Member=None):
     await ctx.message.delete()
     format = "gif"
@@ -441,7 +443,7 @@ async def av(ctx, *, user: discord.Member=None):
     with io.BytesIO(image) as file:
         await ctx.send(file = discord.File(file, f"Avatar.{format}")) 
 
-@choppa.command()
+@vlonex.command()
 async def whois(ctx, *, user: discord.Member = None):
     await ctx.message.delete()
     if user is None:
@@ -463,7 +465,7 @@ async def whois(ctx, *, user: discord.Member = None):
     em.add_field(name="`choppa <3`", value="We See You Using this sb cuh (;", inline=True)
     return await ctx.send(embed=em)
 
-@choppa.command(aliases=['pfpget', 'stealpfp'])
+@vlonex.command(aliases=['pfpget', 'stealpfp'])
 async def stealav(ctx, user: discord.Member):
     await ctx.message.delete()
     if config.get('password') == 'password-here':
@@ -483,7 +485,7 @@ async def stealav(ctx, user: discord.Member):
         except discord.HTTPException as e:
             print(f"{Fore.RED}[ERROR]: {Fore.RED}{e}"+Fore.RESET)
 
-@choppa.command(name='set-pfp', aliases=['setpfp', 'pfpset'])
+@vlonex.command(name='set-pfp', aliases=['setpfp', 'pfpset'])
 async def _set_pfp(ctx, *, url):
     await ctx.message.delete()
     if config.get('password') == 'password-here':
@@ -503,7 +505,7 @@ async def _set_pfp(ctx, *, url):
     except discord.HTTPException as e:
             print(f"{Fore.RED}[ERROR]: {Fore.RED}{e}"+Fore.RESET)
 
-@choppa.command()
+@vlonex.command()
 async def dick(ctx, *, user: discord.Member = None):
     await ctx.message.delete()
     if user is None:
@@ -516,7 +518,7 @@ async def dick(ctx, *, user: discord.Member = None):
     em.add_field(name="`choppa <3`", value="i see u using this sb cuh (;", inline=True)
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def tokeninfo(ctx, _token):
     await ctx.message.delete()
     headers = {
@@ -548,7 +550,7 @@ async def tokeninfo(ctx, _token):
             em.set_thumbnail(url=f"https://cdn.discordapp.com/avatars/{user_id}/{avatar_id}")
     return await ctx.send(embed=em)
     
-@choppa.command()
+@vlonex.command()
 async def dmall(ctx, *, message):
     await ctx.message.delete()
     for user in list(ctx.guild.members):
@@ -558,7 +560,7 @@ async def dmall(ctx, *, message):
         except:
             pass
 
-@choppa.command()
+@vlonex.command()
 async def massban(ctx):
     await ctx.message.delete()
     for user in list(ctx.guild.members):
@@ -567,7 +569,7 @@ async def massban(ctx):
         except:
             pass    
 
-@choppa.command()
+@vlonex.command()
 async def kickall(ctx):
     await ctx.message.delete()
     for user in list(ctx.guild.members):
@@ -576,7 +578,7 @@ async def kickall(ctx):
         except:
             pass    
 
-@choppa.command()
+@vlonex.command()
 async def massr(ctx):
     await ctx.message.delete()
     for _i in range(250):
@@ -585,7 +587,7 @@ async def massr(ctx):
         except:
             return    
 
-@choppa.command()
+@vlonex.command()
 async def massc(ctx):
     await ctx.message.delete()
     for _i in range(250):
@@ -594,7 +596,7 @@ async def massc(ctx):
         except:
             return
 
-@choppa.command()
+@vlonex.command()
 async def delc(ctx):
     await ctx.message.delete()
     for channel in list(ctx.guild.channels):
@@ -603,7 +605,7 @@ async def delc(ctx):
         except:
             return
 
-@choppa.command() 
+@vlonex.command() 
 async def delr(ctx): 
     await ctx.message.delete()
     for role in list(ctx.guild.roles):
@@ -612,13 +614,13 @@ async def delr(ctx):
         except:
             pass
 
-@choppa.command()
+@vlonex.command()
 async def spam(ctx, amount: int, *, message):
     await ctx.message.delete()    
     for _i in range(amount):
         await ctx.send(message)
 
-@choppa.command(name='8ball')
+@vlonex.command(name='8ball')
 async def _ball(ctx, *, question):
     await ctx.message.delete()
     responses = [
@@ -639,7 +641,7 @@ async def _ball(ctx, *, question):
     embed.set_footer(text=datetime.datetime.now())
     await ctx.send(embed=embed)
 
-@choppa.command()
+@vlonex.command()
 async def slot(ctx):
     await ctx.message.delete()
     emojis = "🍎🍊🍐🍋🍉🍇🍓🍒"
@@ -654,20 +656,20 @@ async def slot(ctx):
     else:
         await ctx.send(embed=discord.Embed.from_dict({"title":"Slot machine", "description":f"{slotmachine} No match, you lost"}))
 
-@choppa.command()
+@vlonex.command()
 async def tts(ctx, *, message):
     await ctx.message.delete()
     buff = await do_tts(message)
     await ctx.send(file=discord.File(buff, f"{message}.wav"))
 
-@choppa.command()
+@vlonex.command()
 async def serverav(ctx):
     await ctx.message.delete()
     em = discord.Embed(title=ctx.guild.name)
     em.set_image(url=ctx.guild.icon_url)
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def anal(ctx):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/anal")
@@ -676,7 +678,7 @@ async def anal(ctx):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)   
 
-@choppa.command()
+@vlonex.command()
 async def hentai(ctx):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/Random_hentai_gif")
@@ -685,7 +687,7 @@ async def hentai(ctx):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)   
 
-@choppa.command()
+@vlonex.command()
 async def boobs(ctx):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/boobs")
@@ -694,7 +696,7 @@ async def boobs(ctx):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def blowjob(ctx):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/blowjob")
@@ -703,7 +705,7 @@ async def blowjob(ctx):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def tits(ctx): 
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/tits")
@@ -712,7 +714,7 @@ async def tits(ctx):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def lesbian(ctx): 
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/les")
@@ -721,7 +723,7 @@ async def lesbian(ctx):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()  
+@vlonex.command()  
 async def feed(ctx, user: discord.Member):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/feed")
@@ -730,7 +732,7 @@ async def feed(ctx, user: discord.Member):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def slap(ctx, user: discord.Member):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/slap")
@@ -739,7 +741,7 @@ async def slap(ctx, user: discord.Member):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def hug(ctx, user: discord.Member):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/hug")
@@ -748,7 +750,7 @@ async def hug(ctx, user: discord.Member):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def kiss(ctx, user: discord.Member):
     await ctx.message.delete()
     r = requests.get("https://nekos.life/api/v2/img/kiss")
@@ -757,14 +759,14 @@ async def kiss(ctx, user: discord.Member):
     em.set_image(url=res['url'])
     await ctx.send(embed=em)
 
-@choppa.command()
+@vlonex.command()
 async def uptime(ctx):
     await ctx.message.delete()
     uptime = datetime.datetime.utcnow() - start_time
     uptime = str(uptime).split('.')[0]
     await ctx.send(f'`'+uptime+'`')
 
-@choppa.command()
+@vlonex.command()
 async def purge(ctx, amount: int):
     await ctx.message.delete()
     async for message in ctx.message.channel.history(limit=amount).filter(lambda m: m.author == choppa.user).map(lambda m: m):
@@ -773,57 +775,57 @@ async def purge(ctx, amount: int):
         except:
             pass
 
-@choppa.command()
+@vlonex.command()
 async def stream(ctx, *, message):
     await ctx.message.delete()
     stream = discord.Streaming(
         name=message,
         url=stream_url, 
     )
-    await choppa.change_presence(activity=stream)    
+    await vlonex.change_presence(activity=stream)    
 
-@choppa.command()
+@vlonex.command()
 async def play(ctx, *, message):
     await ctx.message.delete()
     game = discord.Game(
         name=message
     )
-    await choppa.change_presence(activity=game)
+    await vlonex.change_presence(activity=game)
 
-@choppa.command()
+@vlonex.command()
 async def listen(ctx, *, message):
     await ctx.message.delete()
-    await choppa.change_presence(
+    await vlonex.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.listening, 
             name=message, 
         ))
 
-@choppa.command()
+@vlonex.command()
 async def watch(ctx, *, message):
     await ctx.message.delete()
-    await choppa.change_presence(
+    await vlonex.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching, 
             name=message
         ))
 
-@choppa.command()
+@vlonex.command()
 async def nitro(ctx):
     await ctx.message.delete()
     await ctx.send(Nitro())
 
-@choppa.command()
+@vlonex.command()
 async def renameg(ctx, *, name):
     await ctx.message.delete()
     await ctx.guild.edit(name=name)
 
-@choppa.command()
+@vlonex.command()
 async def prefix(ctx, prefix):
     await ctx.message.delete()
     choppa.command_prefix = str(prefix)
 
-@choppa.command()
+@vlonex.command()
 async def setgpfp(ctx, url: str):
     await ctx.message.delete
     """Set the guild icon."""
