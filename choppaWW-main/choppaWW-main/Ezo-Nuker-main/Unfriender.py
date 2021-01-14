@@ -15,7 +15,7 @@ Clear()
 
 while True:
     password = input("[+] Enter Password: ")
-    if password =="EzoW":
+    if password =="VloneX":
         print("Correct password")
         input("[+] enter to continue to Selfbot")
         break
@@ -33,20 +33,21 @@ if src.status_code == 200:
     print('[+] Valid token')
     input("Press any key")
 else:
-    print(f'[{Fore.RED}-{Fore.RESET}] Wrong token jit')
+    print(f'[{Fore.ORANGE}-{Fore.RESET}] Wrong token jit')
     input("Press any key")
     exit(0)
 Clear()
 
 
 print(f''' 
-                                            ______ __________   __          __
-                                           |  ____|___  / __ \  \ \        / /
-                                           | |__     / / |  | |  \ \  /\  / / 
-                                           |  __|   / /| |  | |   \ \/  \/ /  
-                                           | |____ / /__ |__| |    \  /\  /   
-                                           |______/_____\____/      \/  \/    
-                                    
+                                      __      ___      ____  _   _ ________   __  _   _ _    _ _  ________ _____  
+                                      \ \    / / |    / __ \| \ | |  ____\ \ / / | \ | | |  | | |/ /  ____|  __ \ 
+                                       \ \  / /| |   | |  | |  \| | |__   \ V /  |  \| | |  | | ' /| |__  | |__) |
+                                        \ \/ / | |   | |  | | . ` |  __|   > <   | . ` | |  | |  < |  __| |  _  / 
+                                         \  /  | |____ |__| | |\  | |____ / . \  | |\  | |__| | . \| |____| | \ \ 
+                                          \/   |______\____/|_| \_|______/_/ \_\ |_| \_|\____/|_|\_\______|_|  \_\
+                                                                             
+                                                                             
                                     
                                                                                                        ''')
 
